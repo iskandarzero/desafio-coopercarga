@@ -1,70 +1,65 @@
-class DoSomething {
-  static main(args) {
-    let M = 1000;
-    let RR = 50;
-    let CC = 4;
-    let ORDMAX = 30;
-    let P = Array(M + 1).fill(0);
-    let PAGENUMBER = 0;
-    let PAGEOFFSET = 0;
-    let ROWOFFSET = 0;
-    let C = 0;
-    let J = 0;
-    let K = 0;
-    let ITIS = false;
-    let ORD = 0;
-    let SQUARE = 0;
-    let N = 0;
-    let MULT = Array(ORDMAX + 1).fill(0);
-    J = 1;
-    K = 1;
-    P[1] = 2;
-    ORD = 2;
-    SQUARE = 9;
-    while (K < M) {
+class PrimeNumberGenerator {
+  static main() {
+    const numbersArr = this.generatePrimeNumbers(1000);
+    this.formatPages(numbersArr);
+  }
+
+  static generatePrimeNumbers(limit) {
+    const numbersArr = new Array(limit + 1).fill(0);
+    const multiples = new Array(31).fill(0);
+    let index = 1;
+    let isPrime = false;
+    let ord = 2;
+    let square = 9;
+    numbersArr[1] = 2;
+
+    for (let i = 1; i < limit; i++, numbersArr[i] = index) {
       do {
-        J += 2;
-        if (J == SQUARE) {
-          ORD++;
-          SQUARE = P[ORD] * P[ORD];
-          MULT[ORD - 1] = J;
+        index += 2;
+        if (index === square) {
+          ord++;
+          square = numbersArr[ord] * numbersArr[ord];
+          multiples[ord - 1] = index;
         }
-        N = 2;
-        ITIS = true;
-        while (N < ORD && ITIS) {
-          while (MULT[N] < J) {
-            MULT[N] += P[N] + P[N];
+        let n = 2;
+        isPrime = true;
+        while (n < ord && isPrime) {
+          while (multiples[n] < index) {
+            multiples[n] += numbersArr[n] + numbersArr[n];
           }
-          if (MULT[N] == J) {
-            ITIS = false;
+          if (multiples[n] === index) {
+            isPrime = false;
           }
-          N++;
+          n++;
         }
-      } while (!ITIS);
-      K++;
-      P[K] = J;
+      } while (!isPrime);
     }
-    PAGENUMBER = 1;
-    PAGEOFFSET = 1;
-    while (PAGEOFFSET <= M) {
-      console.log("Page ", PAGENUMBER);
-      for (
-        ROWOFFSET = PAGEOFFSET;
-        ROWOFFSET <= PAGEOFFSET + RR - 1;
-        ROWOFFSET++
-      ) {
-        let aux = [];
-        for (C = 0; C <= CC - 1; C++) {
-          if (ROWOFFSET + C * RR <= M) {
-              aux.push(P[ROWOFFSET + C * RR]);
+
+    return numbersArr;
+  }
+
+  static formatPages(numbersArr) {
+    const colLimit = 4;
+    const rowLimit = 50;
+    let pageNumber = 1;
+    let rowOffset = 1;
+
+    while (rowOffset < numbersArr.length) {
+      console.log("Page ", pageNumber);
+      for (let row = 0; row < rowLimit; row++) {
+        const rowElements = [];
+        for (let col = 0; col < colLimit; col++) {
+          const index = rowOffset + col * rowLimit + row;
+          if (index <= numbersArr.length) {
+            rowElements.push(numbersArr[index]);
           }
         }
-        console.log(aux.join('|'));
+        console.log(rowElements.join('|'));
       }
-      PAGENUMBER++;
-      PAGEOFFSET += RR * CC;
+      pageNumber++;
+      rowOffset += rowLimit * colLimit;
     }
   }
 }
 
-DoSomething.main([]);
+PrimeNumberGenerator.main([]);
