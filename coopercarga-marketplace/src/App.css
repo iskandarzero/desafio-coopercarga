@@ -1,0 +1,68 @@
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .6;
+  }
+}
+
+.bannerContainer {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  position: relative;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 330px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.85;
+}
+
+.imageBanner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.textContainer {
+  position: absolute;
+  top: 2.5rem;
+  left: 5rem;
+  color: white;
+}
+
+.textTitle {
+  font-weight: bold;
+  font-size: 3.75rem;
+}
+
+.textSpan {
+  font-weight: bold;
+  font-size: 3.75rem;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  color: yellow;
+}
+
+.textDescription {
+  font-weight: light;
+  margin-top: 10px;
+  width: 80%;
+}
+
+.constructionContainer {
+  height: 86vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
