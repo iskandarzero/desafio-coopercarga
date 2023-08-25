@@ -33,9 +33,11 @@ export default function Home() {
     }
 
     if (filteredProducts.length > 0) {
-      filter = filteredProducts.filter((product) => _.intersection(product.available_sizes, newArr).length > 0);
+      filter = filteredProducts.filter((product) =>
+        _.intersection(product.available_sizes, newArr).length > 0);
     } else {
-      filter = products.filter((product) => _.intersection(product.available_sizes, newArr).length > 0);
+      filter = products.filter((product) =>
+        _.intersection(product.available_sizes, newArr).length > 0);
     }
     
     setFilteredProducts(filter);
@@ -47,19 +49,24 @@ export default function Home() {
 
     switch(price) {
       case 1:
-        filter = products.filter((product) => product.price <= 100);
+        filter = products.filter((product) =>
+          product.price <= 100);
         break;
       case 2:
-        filter = products.filter((product) => product.price > 100 && product.price <= 200);
+        filter = products.filter((product) =>
+          product.price > 100 && product.price <= 200);
         break;
       case 3:
-        filter = products.filter((product) => product.price > 200 && product.price <= 300);
+        filter = products.filter((product) =>
+          product.price > 200 && product.price <= 300);
         break;
       case 4:
-        filter = products.filter((product) => product.price > 300 && product.price <= 400);
+        filter = products.filter((product) =>
+          product.price > 300 && product.price <= 400);
         break;
       default:
-        filter = products.filter((product) => product.price > 400);
+        filter = products.filter((product) =>
+          product.price > 400);
     }
 
     setFilteredProducts(filter);
@@ -78,51 +85,128 @@ export default function Home() {
   }
 
   return (
-    <div class="w-100">
+    <div className="w-100">
       <Banner />
-      <div class="d-flex justify-content-center align-items-center dropdown mb-3">
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle m-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <div className="d-flex justify-content-center align-items-center dropdown mb-3">
+        <div className="dropdown">
+          <button
+            className="btn btn-light dropdown-toggle m-1"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Tamanho
           </button>
-          <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
-            {sizeArr.map((size) => <button onClick={() => handleSizeFilter(size)} class="dropdown-item">{size}</button>)}
+          <div
+            className="dropdown-menu text-center"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            {sizeArr.map((size, i) =>
+              <button
+                onClick={() =>handleSizeFilter(size)}
+                className="dropdown-item"
+                key={i}
+              >
+                {size}
+              </button>)
+            }
           </div>
         </div>
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle m-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="dropdown">
+          <button
+            className="btn btn-light dropdown-toggle m-1"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Preço
           </button>
-          <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
-            <button class="dropdown-item" onClick={() => filterByPrice(1)}>Até R$ 100</button>
-            <button class="dropdown-item" onClick={() => filterByPrice(2)}>R$ 100 - R$ 200</button>
-            <button class="dropdown-item" onClick={() => filterByPrice(3)}>R$ 200 - R$ 300</button>
-            <button class="dropdown-item" onClick={() => filterByPrice(4)}>R$ 300 - R$ 400</button>
-            <button class="dropdown-item" onClick={() => filterByPrice(5)}>Acima de R$ 400</button>
+          <div
+            className="dropdown-menu text-center"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            <button className="dropdown-item" onClick={() => filterByPrice(1)}>
+              Até R$ 100
+            </button>
+            <button className="dropdown-item" onClick={() => filterByPrice(2)}>
+              R$ 100 - R$ 200
+            </button>
+            <button className="dropdown-item" onClick={() => filterByPrice(3)}>
+              R$ 200 - R$ 300
+            </button>
+            <button className="dropdown-item" onClick={() => filterByPrice(4)}>
+              R$ 300 - R$ 400
+            </button>
+            <button className="dropdown-item" onClick={() => filterByPrice(5)}>
+              Acima de R$ 400
+            </button>
           </div>
         </div>
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle m-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="dropdown">
+          <button
+            className="btn btn-light dropdown-toggle m-1"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Esporte
           </button>
-          <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
-            {sportArr.map((sport) => <button onClick={() => filterBySport(sport)} class="dropdown-item">{sport}</button>)}
+          <div
+            className="dropdown-menu text-center"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            {sportArr.map((sport, i) =>
+              <button
+                onClick={() => filterBySport(sport)}
+                className="dropdown-item"
+                key={i}
+              >
+                {sport}
+              </button>)
+            }
           </div>
         </div>
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle m-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div className="dropdown">
+          <button
+            className="btn btn-light dropdown-toggle m-1"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Categoria
           </button>
-          <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
-            {typeArr.map((type) => <button onClick={() => filterByType(type)} class="dropdown-item">{type}</button>)}
+          <div
+            className="dropdown-menu text-center"
+            aria-labelledby="dropdownMenuButton1"
+          >
+            {typeArr.map((type, i) =>
+              <button
+                onClick={() => filterByType(type)}
+                className="dropdown-item"
+                key={i}
+              >
+                {type}
+              </button>)
+            }
           </div>
         </div>
-        <button class="btn btn-outline-secondary btn-light" onClick={() => setFilteredProducts([])}>Limpar Filtros</button>
+        <button
+          className="btn btn-outline-secondary btn-light"
+          onClick={() => setFilteredProducts([])}
+        >
+          Limpar Filtros
+        </button>
       </div>
-      <div class="d-flex justify-content-center">
-        <div class="d-flex justify-content-center flex-wrap w-75">
-          {filteredProducts.length > 0 ? filteredProducts.map((product, i) => <ProductCard product={product} key={i} />) :
-            products.length > 0 && products.map((product, i) => <ProductCard product={product} key={i} />)
+      <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center flex-wrap w-75">
+          {filteredProducts.length > 0 ? filteredProducts.map((product, i) =>
+            <ProductCard product={product} key={i} />) :
+            products.length > 0 && products.map((product, i) =>
+            <ProductCard product={product} key={i} />)
           }
         </div>
       </div>

@@ -19,9 +19,14 @@ export default function ProductCard(props) {
   }
 
   return (
-    <div class="px-2 pt-2 m-2 border border-dark rounded bg-light">
+    <div className="px-2 pt-2 m-2 border border-dark rounded bg-light">
       <div onClick={detailsModal}>
-        <img class="border border-dark" src={product.image_url} alt={product.type} width={400} />
+        <img
+          className="border border-dark"
+          src={product.image_url}
+          alt={product.type}
+          width={400}
+        />
         <h5>{product.name}</h5>
         <p>{`${product.type} / ${product.sport}`}</p>
         <p>{product.price}</p>
@@ -30,10 +35,15 @@ export default function ProductCard(props) {
         <div className="d-flex flex-column">
           <div>
             <button onClick={detailsModal} className="btn btn-lg pt-0">
-              <span aria-hidden="true" class="h4">&times;</span>
+              <span aria-hidden="true" className="h4">&times;</span>
             </button>
           </div>
-          <img src={product.image_url} alt={product.type} width={470} className="align-self-center" />
+          <img
+            src={product.image_url}
+            alt={product.type}
+            width={470}
+            className="align-self-center"
+          />
           <h3 className="mt-2">{product.name}</h3>
           <p>{`${product.type} / ${product.sport}`}</p>
           <p>{`Marca: ${product.seller}`}</p>
